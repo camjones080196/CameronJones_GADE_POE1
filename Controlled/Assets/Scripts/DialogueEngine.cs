@@ -57,7 +57,7 @@ public class DialogueEngine : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.E) && enter && !talking && Time.timeScale != 0.0f)
+        if (Input.GetKeyDown(KeyCode.E) && enter && !talking)
         {
             GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().normalClick();
             DialoguePanel.hideOptions();
@@ -136,7 +136,8 @@ public class DialogueEngine : MonoBehaviour {
         }
         else
         {
-            Time.timeScale = 0.0f;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Move", false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
             Cursor.visible = true;
             ShowGUI();
         }
@@ -175,7 +176,8 @@ public class DialogueEngine : MonoBehaviour {
         }
         else
         {
-            Time.timeScale = 0.0f;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Move", false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
             Cursor.visible = true;
             ShowGUI();
         }
@@ -204,7 +206,7 @@ public class DialogueEngine : MonoBehaviour {
     protected void CloseTalk()
     {
         HideGUI();
-        Time.timeScale = 1.0f;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = true;
 
         Cursor.visible = false;
 

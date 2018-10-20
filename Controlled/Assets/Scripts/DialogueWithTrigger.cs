@@ -5,7 +5,7 @@ public class DialogueWithTrigger : DialogueEngine
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && enter && !talking && Time.timeScale != 0.0f)
+        if (Input.GetKeyDown(KeyCode.E) && enter && !talking)
         {
             DialoguePanel.hideOptions();
             NextMessage();
