@@ -65,7 +65,7 @@ public class DialogueEngine : MonoBehaviour {
             Interacted = true;
         }
 
-        if (Time.timeScale == 0)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled == false)
         {
             talking = true;
             Invoke("EnableTalking", 0.1f);            
@@ -74,7 +74,7 @@ public class DialogueEngine : MonoBehaviour {
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.gameObject.tag != "DialogueTrigger")
         {
              GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().prompt();
                 counter = 0;
@@ -132,7 +132,7 @@ public class DialogueEngine : MonoBehaviour {
 
         if (counter > message.Count)
         {
-           CloseTalk();
+            CloseTalk();
         }
         else
         {

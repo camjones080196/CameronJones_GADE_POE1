@@ -37,7 +37,7 @@ public class Opendoor2 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name == "Player"  && this.gameObject.GetComponent<DialogueEngine>().Interacted == true)
+        if (collision.tag == "Player"  && this.gameObject.GetComponent<DialogueEngine>().Interacted == true)
         {
             Debug.Log("Closing");
            

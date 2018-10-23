@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : DialogueTrigger
 {
-    public string scene;
+    public string currrentScene;
+    public string nextScene;
+    GameObject sceneEngine; 
 
     public override void FireTrigger()
     {
@@ -15,6 +17,9 @@ public class NextScene : DialogueTrigger
             return;
         }
         triggered = true;
-        SceneManager.LoadScene(scene);
+
+        sceneEngine = GameObject.FindGameObjectWithTag("SceneManager");
+        sceneEngine.GetComponent<SceneEngine>().Scene = currrentScene;
+        sceneEngine.GetComponent<SceneEngine>().NextScene(nextScene);
     }
 }

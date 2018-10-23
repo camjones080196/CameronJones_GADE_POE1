@@ -12,7 +12,7 @@ public class DialogueWithTrigger : DialogueEngine
             Interacted = true;
         }
 
-        if (Time.timeScale == 0)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled == false)
         {
             talking = true;
             Invoke("EnableTalking", 0.1f);

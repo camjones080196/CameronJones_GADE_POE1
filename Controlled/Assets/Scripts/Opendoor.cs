@@ -32,7 +32,7 @@ public class Opendoor : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name == "Player" && this.gameObject.GetComponent<DialogueEngine>().Interacted == true)
+        if (collision.tag == "Player" && this.gameObject.GetComponent<DialogueEngine>().Interacted == true)
         {   
             anim.SetBool("Opened", false);
             GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().closeDoor();
