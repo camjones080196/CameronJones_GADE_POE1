@@ -31,7 +31,15 @@ public class SceneEngine : MonoBehaviour {
 
     private void Awake()
     {
-       DontDestroyOnLoad(gameObject);
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void NextScene(string nextScene)
