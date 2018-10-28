@@ -14,8 +14,8 @@ public class MoveCharacters : DialogueTrigger{
         }
         triggered = true;
 
-        character1.GetComponent<AIMovement>().startMovement();
-        character2.GetComponent<AIMovement>().startMovement();
+        //character1.GetComponent<AIMovement>().startMovement();
+        //character2.GetComponent<AIMovement>().startMovement();
 
 
     }
