@@ -12,6 +12,7 @@ public class Move : DialogueTrigger {
     float movementD;
     public GameObject Sheila;
     public GameObject Dale;
+    StateMachine state;
 
     int speed = 2;
 
