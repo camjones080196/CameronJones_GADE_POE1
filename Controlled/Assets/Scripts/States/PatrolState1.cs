@@ -33,6 +33,7 @@ public class PatrolState1 : State
         if(count%500 == 0)
         {
             controller.changeState(controller.IdleState);
+            count = 0;
         }
 
         new WaitForFixedUpdate();

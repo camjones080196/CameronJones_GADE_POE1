@@ -15,6 +15,7 @@ public class IdleState : State
         if(count%300 == 0)
         {
             controller.changeState(controller.PatrolState1);
+            count = 0;
         }
 
         character.GetComponent<Animator>().SetBool("Move", false);

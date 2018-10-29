@@ -63,10 +63,10 @@ public class ChangeCharacter : DialogueTrigger {
 
         Dylan.GetComponent<PlayerController>().enabled = false;
         Sheila.GetComponent<PlayerController>().enabled = false;
-        //Dale.GetComponent<PlayerController>().enabled = false;
+        Dale.GetComponent<PlayerController>().enabled = false;
 
         Dylan.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         Sheila.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        //Dale.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        Dale.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 }

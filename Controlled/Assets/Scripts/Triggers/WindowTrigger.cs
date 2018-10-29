@@ -10,6 +10,7 @@ public class WindowTrigger : MonoBehaviour {
     {
         if (collision.tag == "Crate")
         {
+            collision.GetComponent<BoxCollider2D>().enabled = false;
             DialoguePanel.hideOptions();
             Cursor.visible = false;
             this.GetComponent<DialogueEngine>().ChangeDialogueToID(id, true);
