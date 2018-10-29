@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PatrolState1 : State
 {
-    private bool forward = true;
     private float currentX;
     float movement;
     int count = 0;
@@ -15,10 +14,8 @@ public class PatrolState1 : State
     public PatrolState1(StateMachine controller, GameObject character) : base(controller, character)
     {
         destination = GameObject.Find("PatrolTarget1").transform.position;
-        currentX = character.transform.position.x;
     }
 
-    
     public override void Execute()
     {
         if(character.transform.position == GameObject.Find("PatrolTarget1").transform.position)
@@ -52,13 +49,12 @@ public class PatrolState1 : State
     {
         movement = character.transform.position.x;
 
-        if ((movement < currentX && !forward) || (movement > currentX && forward))
+        if ((movement < destination.x && !Forward) || (movement > destination.x && Forward))
         {
             Vector3 playerScale = character.transform.localScale;
             playerScale.x = -playerScale.x;
             character.transform.localScale = playerScale;
-            forward = !forward;
-            currentX = character.transform.position.x;
+            Forward = !Forward;
         }
     }
 }

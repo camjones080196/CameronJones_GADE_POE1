@@ -9,6 +9,10 @@ public class MoveToComputer : DialogueTrigger {
     public GameObject[] targets1;
     public GameObject[] targets2;
 
+    
+    private bool forward1 = true;
+    private bool forward2 = true;
+
     public override void FireTrigger()
     {
         if (triggerOnce && triggered)
@@ -19,8 +23,11 @@ public class MoveToComputer : DialogueTrigger {
 
         character1.GetComponent<AIMovement>().StopAllCoroutines();
         character2.GetComponent<AIMovement>().StopAllCoroutines();
+        forward1 = character1.GetComponent<SheilaMovement>().Forward;
+        forward2 = character2.GetComponent<DaleMovement>().Forward;
         StartCoroutine(moveCharacter1ToComputer());
         StartCoroutine(moveCharacter2ToComputer());
+        
 
     }
 
@@ -30,8 +37,10 @@ public class MoveToComputer : DialogueTrigger {
         {
             while (character1.transform.position != targets1[i].transform.position)
             {
+                character1.GetComponent<Animator>().SetBool("Move", true);
                 yield return new WaitForFixedUpdate();
                 character1.transform.position = Vector3.MoveTowards(character1.transform.position, targets1[i].transform.position, 3 * Time.deltaTime);
+                FlipCharacter1();
             }
         }
 
@@ -44,11 +53,35 @@ public class MoveToComputer : DialogueTrigger {
         {
             while (character2.transform.position != targets2[i].transform.position)
             {
+                character2.GetComponent<Animator>().SetBool("Move", true);
                 yield return new WaitForFixedUpdate();
                 character2.transform.position = Vector3.MoveTowards(character2.transform.position, targets2[i].transform.position, 3 * Time.deltaTime);
+                FlipCharacter2();
             }
         }
 
         character2.GetComponent<Animator>().SetBool("Move", false);
+    }
+
+    void FlipCharacter1()
+    {
+        if (forward1)
+        {
+            Vector3 playerScale = character1.transform.localScale;
+            playerScale.x = -playerScale.x;
+            character1.transform.localScale = playerScale;
+            forward1 = !forward1;
+        }
+    }
+
+    void FlipCharacter2()
+    {
+        if (forward2)
+        {
+            Vector3 playerScale = character2.transform.localScale;
+            playerScale.x = -playerScale.x;
+            character2.transform.localScale = playerScale;
+            forward2 = !forward2;
+        }
     }
 }
