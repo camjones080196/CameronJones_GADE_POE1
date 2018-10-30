@@ -42,7 +42,7 @@ public class DylanMovement : AIMovement {
     {
         yield return new WaitForSeconds(startWaitTime);
 
-        while (points.Count > 0)
+        while(points.Count > 0)
         {
             yield return new WaitForFixedUpdate();
             if (this.transform.position == newPos)
@@ -63,7 +63,6 @@ public class DylanMovement : AIMovement {
             }
             else
             {
-
                 anim.SetBool("Move", true);
                 this.transform.position = Vector3.MoveTowards(this.transform.position, newPos, speed * Time.deltaTime);
                 FlipPlayer();

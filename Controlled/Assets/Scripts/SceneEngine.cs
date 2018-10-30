@@ -50,7 +50,7 @@ public class SceneEngine : MonoBehaviour {
 
     public void restart()
     {
-        Scene= "Scene1";
+        Scene= "Scene0";
         SceneManager.LoadScene(Scene);
     }
 
