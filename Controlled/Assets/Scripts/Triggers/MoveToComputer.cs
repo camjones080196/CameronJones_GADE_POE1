@@ -6,6 +6,7 @@ public class MoveToComputer : DialogueTrigger {
 
     public GameObject character1;
     public GameObject character2;
+    public string currentCharcter;
     public GameObject[] targets1;
     public GameObject[] targets2;
 
@@ -23,8 +24,24 @@ public class MoveToComputer : DialogueTrigger {
 
         character1.GetComponent<AIMovement>().StopAllCoroutines();
         character2.GetComponent<AIMovement>().StopAllCoroutines();
-        forward1 = character1.GetComponent<SheilaMovement>().Forward;
-        forward2 = character2.GetComponent<DaleMovement>().Forward;
+        
+        if(currentCharcter == "Dylan")
+        {
+            forward1 = character1.GetComponent<SheilaMovement>().Forward;
+            forward2 = character2.GetComponent<DaleMovement>().Forward;
+        }
+
+        if (currentCharcter == "Sheila")
+        {
+            forward1 = character1.GetComponent<DylanMovement>().Forward;
+            forward2 = character2.GetComponent<DaleMovement>().Forward;
+        }
+
+        if (currentCharcter == "Dale")
+        {
+            forward1 = character1.GetComponent<DylanMovement>().Forward;
+            forward2 = character2.GetComponent<SheilaMovement>().Forward;
+        }
         StartCoroutine(moveCharacter1ToComputer());
         StartCoroutine(moveCharacter2ToComputer());
         

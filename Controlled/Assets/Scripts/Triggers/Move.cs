@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Move : DialogueTrigger {
 
-    private bool forwardS = true;
+    public bool forwardS;
     private float currentXS;
     float movementS;
-    private bool forwardD = true;
+    public bool forwardD;
     private float currentXD;
     float movementD;
     public GameObject Sheila;
@@ -27,6 +27,7 @@ public class Move : DialogueTrigger {
         }
 
         triggered = true;
+
         currentXS = Sheila.transform.position.x;
         currentXD = Dale.transform.position.x;
         StartCoroutine(moveSheila());

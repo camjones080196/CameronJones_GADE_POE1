@@ -53,6 +53,7 @@ public class ChangeCharacter : DialogueTrigger {
         mainCam.transform.position = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y, -15);
         targetCharacter.GetComponent<PlayerController>().enabled = true;
         targetCharacter.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        Cursor.visible = true;
     }
 
     public void resetCharacters()
